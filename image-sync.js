@@ -1,9 +1,12 @@
 "use strict";
 
+global.Buffer = global.Buffer || require('buffer').Buffer;
+
 var getOptions = require('./lib/util').getOptions;
 
 var QR = require('./lib/qr-base').QR;
-var png = require('./lib/png');
+var bitmap = require('./lib/bitmap').bitmap;
+var png_sync = require('./lib/png_sync').png_sync;
 var vector = require('./lib/vector');
 
 function qr_image_sync(text, options) {
@@ -22,11 +25,11 @@ function qr_image_sync(text, options) {
       break;
   case 'png':
   default:
-      var bitmap = png.bitmap(matrix, options.size, options.margin);
+      var bitmapData = bitmap(matrix, options.size, options.margin);
       if (options.customize) {
-          options.customize(bitmap);
+          options.customize(bitmapData);
       }
-      result = png.png_sync(bitmap);
+      result = png_sync(bitmapData);
   }
 
   return result;
