@@ -14,7 +14,7 @@
     "url": "https://github.com/alexeyten/qr-image.git"
   },
   "bugs": "https://github.com/alexeyten/qr-image/issues",
-  "main": "./lib/qr.js",
+  "main": "./index.js",
   "scripts": {
     "test": "./tests/test.js"
   },
